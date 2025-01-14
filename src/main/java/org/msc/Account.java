@@ -23,6 +23,14 @@ public class Account {
         numConsignments++;}
     }
 
+    public void withdraw(float amount){
+        if (balance >= amount){
+            balance -= amount;
+            numWithdrawals++;
+        }
+        System.out.println("Saldo insuficiente, tu saldo actual es " + balance);
+    }
+
     public float getBalance() {
         return balance;
     }
