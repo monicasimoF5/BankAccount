@@ -1,18 +1,21 @@
 package org.msc;
 
 public class Account {
-    private float balance;
+    public float balance;
     private int numConsignments;
     private int numWithdrawals;
     private float annualRate;
     private float monthlyCommission;
 
-    public Account(float initialBalance, int numConsignments) {
+    public Account(float initialBalance, int numConsignments, float annualRate) {
         this.balance = initialBalance;
         this.numConsignments = numConsignments;
         this.numWithdrawals = 0;
-        this.annualRate = 0;
+        this.annualRate = annualRate;
         this.monthlyCommission = 0;
+    }
+
+    public Account(float initialBalance, float annualRate) {
     }
 
     public void record(float amount){
@@ -29,6 +32,15 @@ public class Account {
             numWithdrawals++;
         }
         System.out.println("Saldo insuficiente, tu saldo actual es " + balance);
+    }
+
+    public void monthlyInterest(){
+        balance += balance * (annualRate/12)/100;
+    }
+
+    protected void monthlyStatement() {
+        balance -= monthlyCommission;
+        monthlyInterest();
     }
 
     public float getBalance() {
@@ -70,4 +82,6 @@ public class Account {
     public void setMonthlyCommission(float monthlyCommission) {
         this.monthlyCommission = monthlyCommission;
     }
+
+
 }
