@@ -1,5 +1,6 @@
 package org.msc;
 
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -54,9 +55,20 @@ class AccountTest {
 
     @Test
     public void testPositiveBalanceAndPositiveRate() {
-        Account account = new Account(1000, 5, 5);
+        Account account = new Account(1000, 5, 5f);
         account.monthlyInterest();
-        assertEquals(1004.17, account.getBalance(), 0.05);
+
+        float expectedInterest = 1000 * (5f / 12) / 100;
+        assertEquals(1000 + expectedInterest, account.getBalance(), 0.05);
+    }
+
+    @Test
+    public void givenAccountWhenAnnualRateThenMonthlyInterest() {
+        Account account = new Account(1000, 0, 2.5f);
+        account.monthlyInterest();
+
+        float expectedInterest = 1000 * (2.5f / 12) / 100;
+        Assertions.assertEquals(1000 + expectedInterest, account.getBalance(), 0.01);
     }
 
 }
