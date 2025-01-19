@@ -1,7 +1,7 @@
 package org.msc;
 
 public class SavingsAccount extends Account{
-    private boolean active;
+    boolean active;
 
     public SavingsAccount(float initialBalance, float annualRate) {
         super(initialBalance, annualRate);

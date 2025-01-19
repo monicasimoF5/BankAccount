@@ -29,6 +29,8 @@ class AccountTest {
         assertEquals(1, account.getNumConsignments());
     }
 
+
+
     @Test
     public void testSuccessfulWithdrawal() {
         Account account = new Account(1000, 0, 0);
@@ -70,5 +72,41 @@ class AccountTest {
         float expectedInterest = 1000 * (2.5f / 12) / 100;
         Assertions.assertEquals(1000 + expectedInterest, account.getBalance(), 0.01);
     }
+
+    //Test SavingsAccount
+    @Test
+    public void testConstructorActive() {
+        SavingsAccount account = new SavingsAccount(15000, 5.0f);
+        assertTrue(account.active);
+    }
+
+    @Test
+    public void testConstructorInactive() {
+        SavingsAccount account = new SavingsAccount(5000, 5.0f);
+        assertFalse(account.active);
+    }
+
+    @Test
+    public void testRecordInactive() {
+        SavingsAccount account = new SavingsAccount(5000, 5.0f);
+        account.record(500);
+        assertFalse(account.active);
+    }
+
+    @Test
+    public void testWithdrawInactive() {
+        SavingsAccount account = new SavingsAccount(5000, 5.0f);
+        account.withdraw(500);
+        assertFalse(account.active);
+    }
+
+    @Test
+    public void testRecordAfterWithdrawalMakingInactive() {
+        SavingsAccount account = new SavingsAccount(15000, 5.0f);
+        account.withdraw(12000); // Balance now below 10000
+        account.record(500);
+        assertFalse(account.active);
+    }
+
 
 }

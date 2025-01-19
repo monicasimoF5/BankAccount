@@ -1,11 +1,11 @@
 package org.msc;
 
 public class Account {
-    public float balance;
-    private int numConsignments;
+    protected float balance;
+    protected int numConsignments;
     protected int numWithdrawals;
-    private float annualRate;
-    private float monthlyCommission;
+    protected float annualRate;
+    protected float monthlyCommission;
 
     public Account(float initialBalance, int numConsignments, float annualRate) {
         this.balance = initialBalance;

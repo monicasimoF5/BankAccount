@@ -1,7 +1,7 @@
 package org.msc;
 
 public class CurrentAccount extends Account {
-    private float overdraft;
+    protected float overdraft;
 
     public CurrentAccount(float initialBalance, float annualRate) {
         super(initialBalance, annualRate);
