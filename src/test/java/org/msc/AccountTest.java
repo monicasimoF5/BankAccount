@@ -73,7 +73,6 @@ class AccountTest {
         Assertions.assertEquals(1000 + expectedInterest, account.getBalance(), 0.01);
     }
 
-    //Test SavingsAccount
     @Test
     public void testConstructorActive() {
         SavingsAccount account = new SavingsAccount(15000, 5.0f);
@@ -108,5 +107,13 @@ class AccountTest {
         assertFalse(account.active);
     }
 
+    @Test
+    public void testRecordIncreaseOverdraft() {
+        CurrentAccount account = new CurrentAccount(0, 5.0f);
+        account.record(200);
+        assertEquals(0, account.getBalance());
+        assertEquals(-200, account.overdraft);
+        assertEquals(1, account.getNumConsignments());
+    }
 
 }
