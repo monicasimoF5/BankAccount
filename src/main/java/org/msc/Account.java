@@ -3,7 +3,7 @@ package org.msc;
 public class Account {
     public float balance;
     private int numConsignments;
-    private int numWithdrawals;
+    protected int numWithdrawals;
     private float annualRate;
     private float monthlyCommission;
 
