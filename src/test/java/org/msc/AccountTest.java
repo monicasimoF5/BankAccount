@@ -29,8 +29,6 @@ class AccountTest {
         assertEquals(1, account.getNumConsignments());
     }
 
-
-
     @Test
     public void testSuccessfulWithdrawal() {
         Account account = new Account(1000, 0, 0);
