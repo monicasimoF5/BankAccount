@@ -36,7 +36,4 @@ public class SavingsAccount extends Account{
         System.out.println("Estado de la cuenta: " + (active ? "Activa" : "Inactiva"));
     }
 
-    public boolean isActive() {
-        return true;
-    }
 }
