@@ -43,6 +43,14 @@ public class Account {
         monthlyInterest();
     }
 
+    public void print() {
+        System.out.println("Saldo: $" + balance);
+        System.out.println("Número de consignaciones: " + numConsignments);
+        System.out.println("Número de retiros: " + numWithdrawals);
+        System.out.println("Tasa anual: " + annualRate + "%");
+        System.out.println("Comisión mensual: $" + monthlyCommission);
+    }
+
     public float getBalance() {
         return balance;
     }

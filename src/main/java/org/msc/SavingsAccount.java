@@ -31,4 +31,12 @@ public class SavingsAccount extends Account{
         super.monthlyStatement();
     }
 
+    public void print() {
+        super.print();
+        System.out.println("Estado de la cuenta: " + (active ? "Activa" : "Inactiva"));
+    }
+
+    public boolean isActive() {
+        return true;
+    }
 }

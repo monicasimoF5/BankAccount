@@ -2,9 +2,17 @@ package org.msc;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ActiveProfiles;
 
 import static org.junit.jupiter.api.Assertions.*;
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
 
+
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
+@ActiveProfiles("test")
 class AccountTest {
 
     @Test
@@ -112,6 +120,13 @@ class AccountTest {
         assertEquals(0, account.getBalance());
         assertEquals(-200, account.overdraft);
         assertEquals(1, account.getNumConsignments());
+    }
+
+    @Test
+    public void testOverdraftLimit() {
+        CurrentAccount account = new CurrentAccount(100, 5);
+        account.setOverdraft(100);
+        account.withdraw(200);
     }
 
 }
